@@ -1,5 +1,6 @@
 require "dentally_api/version"
 
-module DentallyApi
-  # Your code goes here...
+class DentallyApi
+  def initialize( client_id:, redirect_uri:, scope:, response_type:, state: "" )
+  end
 end
