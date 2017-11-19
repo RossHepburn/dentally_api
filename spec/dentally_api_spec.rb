@@ -5,23 +5,18 @@ RSpec.describe DentallyApi do
 
   API_PARAMS =
     {
-      client_id: "f4cdfd450cc1139fb71d8dbf1342fb512e5e9ca507be6a79cf454fbe3a75fd73",
-      redirect_uri: "https://example.com/callback",
-      scope: "appointment patient:read patient:update user:read",
-      response_type: "code",
-      state: "914e62ad35e7aa8a14f46bf8aff9194b24b7f6d7c5a434a7"
-    }
+      host: "http://api.rails.local:3000",
+      access_token: "2c0261bed7e64af85016a7c3c87eaa51ea13dbda9349a30404dfd4281a6b8b10"
+  }.freeze
 
-  describe "Initialisation" do
+  let(:client) { DentallyApi.new(API_PARAMS) }
 
-    it "instantiates the class with named arguments" do
-      expect { DentallyApi.new(API_PARAMS) }.not_to raise_error
-    end
+  it "instantiates the class with named arguments" do
+    expect { client }.not_to raise_error
+  end
 
-    it "instantiates the class without optional arguments" do
-      non_optional = API_PARAMS.dup
-      non_optional.delete(:state)
-      expect { DentallyApi.new(non_optional) }.not_to raise_error
-    end
+  it "practice" do
+    expect(client.practice).not_to be_nil
+    expect(client.errors).to be_empty
   end
 end
