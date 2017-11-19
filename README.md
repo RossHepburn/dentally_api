@@ -1,8 +1,16 @@
 # DentallyApi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dentally_api`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to the Dentally API Gem. It's purpose is to proved a wrapper and
+example to help development of services based around [Dentally](https://dentally.co/) _The UK's leading cloud dental software_.
 
-TODO: Delete this and the text above, and describe your gem
+You can find out more about the API itself [here](https://developer.dentally.co/)
+
+Note: This project comes about from a Dentally developer _scratching
+their own itch_. It isn't officially supported by Dentally and the
+company will not take support calls about it. Please contact the
+developer directly, but also please remember they have a full time job
+developing Dentally itself and may not be able to get back to you right
+away.
 
 ## Installation
 
