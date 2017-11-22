@@ -30,7 +30,56 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To use the wrapper you must first get an access token from the Dentally
+App itself. You can set this up from the Developer tab in Settings.
+If you implement the full OAuth stack then you can get it by
+passing through to the Dentally app and getting one back that meets your
+needs in a callback to your app. Alternatively you can get a key without
+OAuth. Note that the keys will stop working if they aren't used for more
+than 2 weeks and you will have to get a new one.
+
+The keys are also tied to access rights. For example, if you only ask for patient
+details in read mode, you will not be able to access anything else and
+you won't be able to update patient details.
+
+Be very careful with these keys. Storing them openly could
+compromise your security. The keys used in this repository are all from
+a development system kept from the public internet. Internally we use
+environment variables that are not visible anywhere other than the
+machines they are deployed on.
+
+### Connecting to Dentally
+
+```ruby
+
+  API_PARAMS =
+    {
+      host: "https://api.sandbox.dental.ly",
+      access_token: "<ACCESS TOKEN>"
+  }.freeze
+
+  DentallyApi.new(API_PARAMS)
+
+  practice = client.practice
+
+  puts practice.practice_name # My Practice
+```
+
+Note that the params can just be passed as normal, they don't have to be
+in a hash, as per the Ruby 2.x conventions.
+
+The details of the fields delivered by the API match the JSON
+descriptions in the main documentation. The object returned are Structs
+that have the fields in them. As appropriate they may be in arrays.
+
+Struct has also been extended to give a `to_hash` method to make it easy
+to generate insert statements that `ActiveRecord` can process easily for
+creating rows in your own tables.
+
+The API currently only does Practice information. It will be extended as
+needed by the project it was built for, which will probably cover most
+of the API in the end. As always, you are welcome to create a pull
+request for the bits you needed before we got around to it.
 
 ## Development
 
