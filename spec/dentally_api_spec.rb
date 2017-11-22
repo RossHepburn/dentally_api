@@ -1,3 +1,5 @@
+require "byebug"
+
 RSpec.describe DentallyApi do
   it "has a version number" do
     expect(DentallyApi::VERSION).not_to be nil
@@ -18,5 +20,10 @@ RSpec.describe DentallyApi do
   it "practice" do
     expect(client.practice).not_to be_nil
     expect(client.errors).to be_empty
+  end
+
+  it "returned struct supports to_hash" do
+    practice = client.practice
+    practice.to_hash.fetch(:name)
   end
 end

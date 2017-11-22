@@ -29,7 +29,11 @@ class DentallyApi
   end
 
   def to_struct(hash)
-    Struct.new(*hash.keys.map(&:to_sym)).new(*hash.values)
+    Struct.new(*hash.keys.map(&:to_sym)) do
+      def to_hash
+        each_pair.map { |pair| pair }.to_h
+      end
+    end.new(*hash.values) 
   end
 end
 
